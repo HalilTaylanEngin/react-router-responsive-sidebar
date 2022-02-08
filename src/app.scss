@@ -1,0 +1,25 @@
+$baseColor: rgb(0, 65, 126);
+$lightColor: #e0e0e0;
+
+
+@mixin fullPage{
+  height:calc(100vh - 60px);
+  background-color: #e6a1a6;
+}
+
+  
+  //screen behavior
+$small: 476px;
+$medium: 768px;
+
+@mixin screen-medium {
+  @media screen and (max-width: $medium) {
+    @content;
+  }
+}
+
+@mixin screen-small {
+  @media screen and (max-width: $small) {
+    @content;
+  }
+}

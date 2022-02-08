@@ -1,0 +1,236 @@
+@import "../../app.scss";
+
+section {
+  background-color: $baseColor;
+
+  .container {
+    height: 50px;
+    padding: 0 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    object {
+      padding: 5px;
+      img {
+        height: 30px;
+      }
+    }
+
+    menu {
+      flex-grow: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px 0 50px;
+      .link-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        a {
+          padding: 5px;
+          color: $lightColor;
+          text-decoration: none;
+          margin-right: 10px;
+          font-size: 13px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border-radius: 5px;
+          span {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-right: 4px;
+          }
+          &:hover {
+            background-color: darken($baseColor, 5%);
+          }
+        }
+      }
+      .icon-wrapper {
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        button {
+          background-color: transparent;
+          border: none;
+          border-radius: 5px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        .dropdown {
+          background-color: transparent;
+          border: none;
+          border-radius: 5px;
+          position: relative;
+          ul {
+            background-color: $baseColor;
+            list-style: none;
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: -80px;
+            padding: 10px;
+            border-radius: 5px;
+            li {
+              color: $lightColor;
+              display: flex;
+              justify-content: flex-start;
+              align-items: center;
+              border-radius: 5px;
+              padding: 5px;
+              span {
+                margin-right: 5px;
+              }
+              &:hover {
+                background-color: darken($baseColor, 5%);
+              }
+            }
+          }
+          &:hover {
+            ul {
+              display: block;
+
+              box-shadow: 5px 5px 20px 5px rgba($color: #000000, $alpha: 0.5);
+            }
+          }
+        }
+      }
+    }
+    button {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: transparent;
+      border: none;
+      border-radius: 5px;
+      color: $lightColor;
+      margin-left: 10px;
+      display: none;
+      .menu-toggle {
+        font-size: 18px;
+        margin: 5px;
+      }
+    }
+  }
+}
+
+//screen-medium **************************
+@include screen-medium {
+  section {
+    .container {
+      padding: 0 15px;
+      object {
+        img {
+          height: 25px;
+        }
+      }
+
+      menu {
+        padding: 0 5px 0 20px;
+        .icon-wrapper {
+          .dropdown {
+            ul {
+              left: -80px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+//screen-small **************************
+@include screen-small {
+  section {
+    .container {
+      height: 40px;
+      position: relative;
+      padding: 0 10px;
+      object {
+        padding: 3px;
+        img {
+          height: 20px;
+        }
+      }
+
+      menu {
+        position: fixed;
+        right: -300px;
+        top: 40px;
+        max-width: 300px;
+        width: 100%;
+        height: calc(100vh - 40px);
+        background-color: $baseColor;
+        transition: all 0.4s ease;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        .link-wrapper {
+          padding: 50px 0;
+          order: 2;
+          flex-direction: column;
+          border-radius: 5px;
+          width: 90%;
+          a {
+            width: 100%;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            font-size: 14px;
+            height: 40px;
+            border-radius: 5px;
+            padding: 0 10px;
+          }
+        }
+        .icon-wrapper {
+          padding: 5px;
+          position: fixed;
+          top: 6px;
+          right: 40px;
+          width: 100%;
+          display: flex;
+          justify-content: flex-end;
+          margin: 0;
+          button {
+            align-items: flex-start;
+            justify-content: flex-start;
+            height: 30px;
+            padding: 0;
+            margin: 0 0 0 10px;
+
+            .menu-toggle {
+              order: 1;
+              padding: 0;
+              margin: 0;
+              font-size: 14px;
+            }
+          }
+          .dropdown {
+            ul {
+              top: 28px;
+              left: -50px;
+              li {
+                span {
+                  .menu-toggle {
+                    height: 30px;
+                  }
+                }
+              }
+            }
+          }
+        }
+        &.open {
+          right: 0;
+        }
+      }
+      button {
+        display: block;
+      }
+    }
+  }
+}

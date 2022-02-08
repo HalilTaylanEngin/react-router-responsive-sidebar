@@ -1,0 +1,14 @@
+@import "../../app.scss";
+
+footer{
+    background-color:darken($baseColor , 10%) ;
+    color: $lightColor;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    .text{
+        width: 100%;
+        text-align: center;
+    }
+}
